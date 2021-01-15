@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.Home"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.NoActionBar"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                 />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar"
+                android:layout_marginLeft="@dimen/_16sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_100sdp"
+                app:cardElevation="0dp"
+                >
+                <TextView
+                    android:id="@+id/txt_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="@string/search_your_recipes"
+                    android:fontFamily="@font/lato_mediumitalic"
+                    android:drawableLeft="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:singleLine="true"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:gravity="left|center"
+                    android:textSize="@dimen/_15ssp"
+                    android:background="@color/light_gray"/>
+            </androidx.cardview.widget.CardView>
+
+            <include android:id="@+id/shimmer_view_container"
+                layout="@layout/item_view_pager_shimmer"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager_container"
+                android:foregroundGravity="center"
+                android:overScrollMode="never"
+                android:clipToPadding="false"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_130sdp"
+                android:layout_below="@id/card_search"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp">
+            </androidx.viewpager.widget.ViewPager>
+
+            <TextView
+                android:id="@+id/text_title_mealing_cate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_mediumitalic"
+                android:text="Mealing categories"
+                android:textSize="@dimen/_13ssp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_below="@id/view_pager_container"
+                android:layout_marginLeft="@dimen/_8sdp"/>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/text_title_mealing_cate"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="horizontal"/>
+
+            <include android:id="@+id/recycler_view_shimmer"
+                layout="@layout/item_recycler_view_shimmer"/>
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/drawer_menu"
+            android:fitsSystemWindows="true"
+            app:itemIconTint="@color/color_logo"
+            app:itemTextColor="@color/black"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+</layout>

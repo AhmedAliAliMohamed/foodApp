@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.SignUp">
+
+        <TextView
+            android:id="@+id/text_logo_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create New Chef"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="@font/kaushan_script_regular"
+            android:textColor="@color/color_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/_50sdp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iamge_user_registration"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/ic_chef_hat"
+            app:layout_constraintTop_toBottomOf="@id/text_logo_login"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/_13sdp"
+            />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:layout_marginLeft="@dimen/_70sdp"
+            app:layout_constraintTop_toBottomOf="@id/text_logo_login"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_username_input_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iamge_user_registration"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:startIconDrawable="@drawable/ic_baseline_person_outline_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_username_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shaptoftext"
+                android:hint="@string/e_mail_or_phone_number"
+                android:fontFamily="@font/kaushan_script_regular"
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/_15ssp"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_password_input_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_username_input_registration"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/black"
+            app:counterEnabled="true"
+            app:counterMaxLength="20">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_password_editText_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shaptoftext"
+                android:hint="@string/password"
+                android:fontFamily="@font/kaushan_script_regular"
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/_15ssp"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_confirm_password_input_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_password_input_registration"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/black"
+            app:counterEnabled="true"
+            app:counterMaxLength="20">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_confirm_password_editText_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shaptoftext"
+                android:hint="@string/confirm_password"
+                android:fontFamily="@font/kaushan_script_regular"
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/_15ssp"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_confirm_password_input_registration"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/shapeofbutton"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/lato_mediumitalic"
+            android:textStyle="bold"
+            android:textSize="@dimen/_13ssp"
+            android:text="@string/sign_up"/>
+
+        <ProgressBar
+            android:id="@+id/progress_circular_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_confirm_password_input_registration"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:indeterminateDrawable="@drawable/progress"
+            android:visibility="gone"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
