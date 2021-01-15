@@ -53,7 +53,6 @@ public class ItemDetail extends AppCompatActivity {
     private ProgressBar progressBarCarb;
     private ProgressBar progressBarSugar;
     private ProgressBar progressBarPortein;
-
     private TextView textViewCalories;
     private TextView textViewFat;
     private TextView textViewCarb;
