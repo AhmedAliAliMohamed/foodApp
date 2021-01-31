@@ -1,4 +1,4 @@
-package com.example.foodapp.ui.viewmodels;
+package com.example.foodapp.ui.signInUp;
 
 import android.app.Application;
 import android.net.Uri;
@@ -6,8 +6,6 @@ import android.net.Uri;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-
-import com.example.foodapp.ui.repo.RepoForSign;
 
 import com.google.firebase.auth.FirebaseUser;
 

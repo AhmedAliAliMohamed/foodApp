@@ -1,4 +1,4 @@
-package com.example.foodapp.ui.viewmodels;
+package com.example.foodapp.services;
 
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.models.LatestMealModel;

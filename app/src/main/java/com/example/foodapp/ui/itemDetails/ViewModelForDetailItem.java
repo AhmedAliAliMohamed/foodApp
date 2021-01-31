@@ -1,4 +1,4 @@
-package com.example.foodapp.ui.viewmodels;
+package com.example.foodapp.ui.itemDetails;
 
 import android.app.Application;
 
@@ -7,9 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.foodapp.models.ModelForDetailItem;
-import com.example.foodapp.ui.repo.RepoForDetailItem;
-
-import java.util.List;
 
 public class ViewModelForDetailItem extends AndroidViewModel {
     private RepoForDetailItem repoForDetailItem;

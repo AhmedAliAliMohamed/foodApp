@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.SignUp">
+        tools:context=".ui.signInUp.SignUp">
 
         <TextView
             android:id="@+id/text_logo_login"
@@ -133,19 +133,20 @@
             android:id="@+id/btn_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_confirm_password_input_registration"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/shapeofbutton"
+            android:fontFamily="@font/lato_mediumitalic"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/color_logo"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:background="@drawable/shapeofbutton"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:fontFamily="@font/lato_mediumitalic"
-            android:textStyle="bold"
-            android:textSize="@dimen/_13ssp"
-            android:text="@string/sign_up"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_confirm_password_input_registration" />
 
         <ProgressBar
             android:id="@+id/progress_circular_registration"

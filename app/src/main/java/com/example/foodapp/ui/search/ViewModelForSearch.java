@@ -1,4 +1,4 @@
-package com.example.foodapp.ui.viewmodels;
+package com.example.foodapp.ui.search;
 
 import android.app.Application;
 
@@ -6,7 +6,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.foodapp.models.ModelSearch;
-import com.example.foodapp.ui.repo.RepoForSearch;
 
 public class ViewModelForSearch  extends AndroidViewModel {
   private   MutableLiveData<ModelSearch> modelSearchMutableLiveData;

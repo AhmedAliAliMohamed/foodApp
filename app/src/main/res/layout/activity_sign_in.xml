@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.SignIn">
+        tools:context=".ui.signInUp.SignIn">
 
         <ImageView
             android:id="@+id/iamge_svg_logo_login"
@@ -116,30 +116,31 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_forget_password"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
-            android:textColor="@color/white"
+            android:background="@drawable/shapeofbutton"
+            android:fontFamily="@font/lato_mediumitalic"
             android:text="@string/sign_in"
             android:textAllCaps="false"
-            android:fontFamily="@font/lato_mediumitalic"
-            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="@dimen/_13ssp"
-            android:background="@drawable/shapeofbutton" />
+            android:textStyle="bold"
+            app:backgroundTint="@color/color_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_forget_password"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"/>
 
         <ProgressBar
             android:id="@+id/progress_circular_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_forget_password"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/_20sdp"
             android:indeterminateDrawable="@drawable/progress"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_forget_password" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/signIn_google"
@@ -148,10 +149,8 @@
             app:layout_constraintTop_toBottomOf="@id/btn_login"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginEnd="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp" />
 
-
-            />
 
 
         <TextView

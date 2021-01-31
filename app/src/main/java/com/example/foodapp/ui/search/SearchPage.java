@@ -1,4 +1,4 @@
-package com.example.foodapp.ui;
+package com.example.foodapp.ui.search;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,13 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.foodapp.R;
 import com.example.foodapp.adapters.AdapterForSearchItem;
 import com.example.foodapp.databinding.ActivitySearchPageBinding;
 import com.example.foodapp.models.ModelSearch;
-import com.example.foodapp.ui.viewmodels.ViewModelForSearch;
 
 import java.util.ArrayList;
 import java.util.List;

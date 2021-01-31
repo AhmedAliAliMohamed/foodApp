@@ -1,9 +1,10 @@
-package com.example.foodapp.ui;
+package com.example.foodapp.ui.signInUp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.foodapp.R;
 import com.example.foodapp.databinding.ActivitySignInBinding;
-import com.example.foodapp.ui.viewmodels.ViewModelForSign;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
@@ -28,6 +28,7 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
        activitySignInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
        clickToSingIn();
+       goToSignUp();
 
     }
 
@@ -65,6 +66,16 @@ public class SignIn extends AppCompatActivity {
 
                 }
 
+            }
+        });
+    }
+
+    private void goToSignUp(){
+        activitySignInBinding.textCreateNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentToSignUp = new Intent(SignIn.this,SignUp.class);
+                startActivity(intentToSignUp);
             }
         });
     }

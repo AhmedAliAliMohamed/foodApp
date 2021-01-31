@@ -1,4 +1,4 @@
-package com.example.foodapp.ui;
+package com.example.foodapp.ui.signInUp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +12,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.foodapp.R;
 import com.example.foodapp.databinding.ActivitySignUpBinding;
-import com.example.foodapp.ui.viewmodels.ViewModelForSign;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.example.foodapp.ui.repo;
+package com.example.foodapp.ui.signInUp;
 
 import android.app.Application;
 import android.net.Uri;

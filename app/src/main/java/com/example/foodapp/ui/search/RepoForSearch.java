@@ -1,12 +1,11 @@
-package com.example.foodapp.ui.repo;
+package com.example.foodapp.ui.search;
 
 import android.app.Application;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.foodapp.ApiClient;
+import com.example.foodapp.services.ApiClient;
 
 import com.example.foodapp.models.ModelSearch;
 

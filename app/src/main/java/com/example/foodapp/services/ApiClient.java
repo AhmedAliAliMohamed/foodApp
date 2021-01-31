@@ -1,10 +1,9 @@
-package com.example.foodapp;
+package com.example.foodapp.services;
 
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.models.LatestMealModel;
 import com.example.foodapp.models.ModelForDetailItem;
 import com.example.foodapp.models.ModelSearch;
-import com.example.foodapp.ui.viewmodels.ApiCallInterface;
 
 import java.util.List;
 

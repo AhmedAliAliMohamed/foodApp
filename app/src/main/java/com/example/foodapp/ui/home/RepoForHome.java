@@ -1,11 +1,11 @@
-package com.example.foodapp.ui.repo;
+package com.example.foodapp.ui.home;
 
 import android.app.Application;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.foodapp.ApiClient;
+import com.example.foodapp.services.ApiClient;
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.models.LatestMealModel;
 

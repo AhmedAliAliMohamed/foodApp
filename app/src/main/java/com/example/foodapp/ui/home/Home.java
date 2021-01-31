@@ -1,4 +1,4 @@
-package com.example.foodapp.ui;
+package com.example.foodapp.ui.home;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,15 +7,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.foodapp.R;
 import com.example.foodapp.adapters.AdapterForHomeCategories;
@@ -23,9 +18,8 @@ import com.example.foodapp.adapters.AdapterForViewagerHome;
 import com.example.foodapp.databinding.ActivityHomeBinding;
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.models.LatestMealModel;
-import com.example.foodapp.ui.viewmodels.ViewModelForHome;
+import com.example.foodapp.ui.search.SearchPage;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -104,7 +98,7 @@ public class Home extends AppCompatActivity {
         activityHomeBinding.txtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentToSearchPage = new Intent(Home.this,SearchPage.class);
+                Intent intentToSearchPage = new Intent(Home.this, SearchPage.class);
                 startActivity(intentToSearchPage);
 
 

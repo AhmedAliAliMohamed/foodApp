@@ -2,20 +2,18 @@ package com.example.foodapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.foodapp.R;
 import com.example.foodapp.models.LatestMealModel;
-import com.example.foodapp.ui.ItemDetail;
+import com.example.foodapp.ui.itemDetails.ItemDetail;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

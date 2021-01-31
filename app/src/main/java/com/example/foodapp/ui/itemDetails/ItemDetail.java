@@ -1,4 +1,4 @@
-package com.example.foodapp.ui;
+package com.example.foodapp.ui.itemDetails;
 
 import androidx.annotation.NonNull;
 
@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.foodapp.R;
@@ -25,7 +24,6 @@ import com.example.foodapp.adapters.AdapterForIngredientsItem;
 import com.example.foodapp.adapters.AdapterForStepsItem;
 import com.example.foodapp.databinding.ActivityItemDetailBinding;
 import com.example.foodapp.models.ModelForDetailItem;
-import com.example.foodapp.ui.viewmodels.ViewModelForDetailItem;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.squareup.picasso.Picasso;
 
@@ -40,7 +38,6 @@ public class ItemDetail extends AppCompatActivity {
 
     private int itemId;
     private float ratingBar;
-
 
     private TextView textViewTitleDetail;
     private RatingBar ratingBarDetails;
@@ -150,6 +147,7 @@ public class ItemDetail extends AppCompatActivity {
                 progressBarCarb.setProgress((int) modelForDetailItem.getNutritionInfo().getTotalCarbs());
                 progressBarSugar.setProgress((int) modelForDetailItem.getNutritionInfo().getSugar());
                 progressBarPortein.setProgress((int) modelForDetailItem.getNutritionInfo().getProtein());
+
 
 
             }

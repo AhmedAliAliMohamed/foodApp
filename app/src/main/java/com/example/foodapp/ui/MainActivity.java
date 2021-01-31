@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.foodapp.R;
+import com.example.foodapp.ui.signInUp.SignIn;
 
 public class MainActivity extends AppCompatActivity {
 

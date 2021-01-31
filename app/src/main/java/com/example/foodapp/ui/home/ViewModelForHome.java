@@ -1,4 +1,4 @@
-package com.example.foodapp.ui.viewmodels;
+package com.example.foodapp.ui.home;
 
 import android.app.Application;
 
@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.models.LatestMealModel;
-import com.example.foodapp.ui.repo.RepoForHome;
 
 import java.util.List;
 
