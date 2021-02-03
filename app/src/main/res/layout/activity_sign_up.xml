@@ -16,116 +16,129 @@
             android:id="@+id/text_logo_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create New Chef"
-            android:textSize="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_50sdp"
             android:fontFamily="@font/kaushan_script_regular"
+            android:text="Create New Chef"
             android:textColor="@color/color_logo"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_20ssp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/_50sdp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/iamge_user_registration"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_13sdp"
             android:src="@drawable/ic_chef_hat"
-            app:layout_constraintTop_toBottomOf="@id/text_logo_login"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/_13sdp"
-            />
+            app:layout_constraintTop_toBottomOf="@id/text_logo_login" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="@dimen/_70sdp"
             android:layout_marginLeft="@dimen/_70sdp"
-            app:layout_constraintTop_toBottomOf="@id/text_logo_login"/>
+            android:layout_marginTop="@dimen/_70sdp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_logo_login" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_username_input_registration"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iamge_user_registration"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:boxStrokeColor="@color/color_logo"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iamge_user_registration"
             app:startIconDrawable="@drawable/ic_baseline_person_outline_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_username_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shaptoftext"
-                android:hint="@string/e_mail_or_phone_number"
                 android:fontFamily="@font/kaushan_script_regular"
+                android:hint="@string/e_mail_or_phone_number"
+                android:singleLine="true"
                 android:textColorHint="@color/black"
-                android:textSize="@dimen/_15ssp"
-                android:singleLine="true"/>
+                android:textSize="@dimen/_15ssp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_password_input_registration"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_username_input_registration"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:boxStrokeColor="@color/color_logo"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_username_input_registration"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/black"
-            app:counterEnabled="true"
-            app:counterMaxLength="20">
+            app:startIconDrawable="@drawable/ic_baseline_lock_open_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_password_editText_registration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shaptoftext"
-                android:hint="@string/password"
                 android:fontFamily="@font/kaushan_script_regular"
+                android:hint="@string/password"
+                android:inputType="textPassword"
                 android:textColorHint="@color/black"
-                android:textSize="@dimen/_15ssp"
-                android:inputType="textPassword"/>
+                android:textSize="@dimen/_15ssp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_confirm_password_input_registration"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_password_input_registration"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            app:startIconDrawable="@drawable/ic_baseline_lock_open_24"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:boxStrokeColor="@color/color_logo"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_password_input_registration"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/black"
-            app:counterEnabled="true"
-            app:counterMaxLength="20">
+            app:startIconDrawable="@drawable/ic_baseline_lock_open_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_confirm_password_editText_registration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shaptoftext"
-                android:hint="@string/confirm_password"
                 android:fontFamily="@font/kaushan_script_regular"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
                 android:textColorHint="@color/black"
-                android:textSize="@dimen/_15ssp"
-                android:inputType="textPassword"/>
+                android:textSize="@dimen/_15ssp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +146,9 @@
             android:id="@+id/btn_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:background="@drawable/shapeofbutton"
             android:fontFamily="@font/lato_mediumitalic"
             android:text="@string/sign_up"
@@ -142,22 +157,23 @@
             android:textSize="@dimen/_13ssp"
             android:textStyle="bold"
             app:backgroundTint="@color/color_logo"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_confirm_password_input_registration" />
 
-        <ProgressBar
+        <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/progress_circular_registration"
-            android:layout_width="match_parent"
+            style="@style/SpinKitView.Circle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_confirm_password_input_registration"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/_20sdp"
-            android:indeterminateDrawable="@drawable/progress"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            app:SpinKit_Color="@color/color_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_confirm_password_input_registration" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

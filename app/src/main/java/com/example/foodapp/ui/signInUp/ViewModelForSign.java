@@ -2,6 +2,7 @@ package com.example.foodapp.ui.signInUp;
 
 import android.app.Application;
 import android.net.Uri;
+import android.widget.Toast;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
@@ -25,13 +26,15 @@ public class ViewModelForSign extends AndroidViewModel {
     }
 
     public void signUp(String email, String password) {
-
         repoForSign.signUp(email,password);
-
     }
 
     public void signIn(String email, String password) {
+        if (email.isEmpty() || password.isEmpty()){
+            Toast.makeText(getApplication().getApplicationContext(), "E-mail or password is empty please check it", Toast.LENGTH_SHORT).show();
+        }else {
         repoForSign.signIn(email, password);
+        }
     }
 
     public void  logOut(){
