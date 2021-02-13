@@ -19,5 +19,8 @@
     <string name="steps">Steps</string>
     <string name="nutritioninfo">NutritionInfo</string>
     <string name="search">Search</string>
+    <string name="facebook_app_id">567162047573009</string>
+    <string name="fb_login_protocol_scheme">fb567162047573009</string>
+
 
 </resources>

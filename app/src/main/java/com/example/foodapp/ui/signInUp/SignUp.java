@@ -33,7 +33,7 @@ public class SignUp extends AppCompatActivity {
     private Uri filePath;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" + ".{8,20}");
-    private  String userId;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +110,9 @@ public class SignUp extends AppCompatActivity {
             activitySignUpBinding.textUsernameInputRegistration.setHelperText("This field is required");
             activitySignUpBinding.textPasswordInputRegistration.setHelperText("This field is required");
             activitySignUpBinding.textConfirmPasswordInputRegistration.setHelperText("This field is required");
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() || !PASSWORD_PATTERN.matcher(password).matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             activitySignUpBinding.textUsernameInputRegistration.setHelperText("Please enter the email correctly");
+        } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
             activitySignUpBinding.textConfirmPasswordInputRegistration.setHelperText("The total password you entered is less than 8");
         } else if (!configPassword.matches(password)) {
             activitySignUpBinding.textConfirmPasswordInputRegistration.setHelperText("This password not match");
@@ -123,22 +124,21 @@ public class SignUp extends AppCompatActivity {
             viewModelForSign.getUserLiveData().observe(SignUp.this, new Observer<FirebaseUser>() {
                 @Override
                 public void onChanged(FirebaseUser firebaseUser) {
-                    try {
+                    if (firebaseUser != null){
                         userId = firebaseUser.getUid();
                         uploadImages(userId, filePath);
-                    } catch (Exception e){
-                        Toast.makeText(SignUp.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                       startActivity(new Intent(SignUp.this,SignIn.class));
+                       finish();
+                    }else {
                         Toast.makeText(SignUp.this, "ahmed ali ali ali ali ali ali", Toast.LENGTH_SHORT).show();
                         activitySignUpBinding.progressCircularRegistration.setVisibility(View.GONE);
-                        activitySignUpBinding.btnRegistration.setVisibility(View.VISIBLE);
-                    }
+                        activitySignUpBinding.btnRegistration.setVisibility(View.VISIBLE);}
                 }
             });
 
         }
 
     }
-
 
     public void uploadImages(String userId, Uri fileImage) {
         viewModelForSign.setUploadImage(userId, fileImage);

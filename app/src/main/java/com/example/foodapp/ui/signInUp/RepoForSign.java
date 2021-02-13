@@ -3,6 +3,7 @@ package com.example.foodapp.ui.signInUp;
 import android.app.Application;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.Button;
@@ -10,10 +11,12 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.foodapp.R;
+import com.example.foodapp.ui.home.Home;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.Api;
@@ -60,6 +63,7 @@ public class RepoForSign{
 
         if (firebaseAuth.getCurrentUser() != null) {
             userLiveData.postValue(firebaseAuth.getCurrentUser());
+            loggedOutLiveData.postValue(false);
         }
     }
 
@@ -70,24 +74,18 @@ public class RepoForSign{
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             userLiveData.postValue(task.getResult().getUser());
-                            firebaseUser = firebaseAuth.getCurrentUser();
-                            firebaseUser.sendEmailVerification()
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(application.getApplicationContext(), "Check Your e-mail please !", Toast.LENGTH_SHORT).show();
-                                                Intent intentLogin = new Intent(application.getApplicationContext(), SignIn.class);
-                                                intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                application.getApplicationContext().startActivity(intentLogin);
-                                            } else {
-                                                Toast.makeText(application.getApplicationContext(), "Task is failed", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }).addOnFailureListener(new OnFailureListener() {
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(application, "Success verification mail sent please check your mail ", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(application, "Sign up is failed try again !", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(application, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -103,21 +101,26 @@ public class RepoForSign{
     }
 
     public void signIn(String email, String password) {
-        firebaseAuth.signInWithEmailAndPassword(email, password)
+        firebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            if (firebaseUser.getUid() != null && firebaseAuth.getCurrentUser().isEmailVerified()) {
-                                userLiveData.postValue(firebaseAuth.getCurrentUser());
-                            }
-                        } else {
-                            Toast.makeText(application.getApplicationContext(), "Login Failure:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-
+                        if (task.isSuccessful()){
+                        if (firebaseAuth.getCurrentUser().isEmailVerified()){
+                            userLiveData.postValue(task.getResult().getUser());
+                        }else {
+                            Toast.makeText(application, "Please check your mail and make verified", Toast.LENGTH_SHORT).show();
+                        }}
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(application, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
+
 
     public void logOut() {
         firebaseAuth.signOut();

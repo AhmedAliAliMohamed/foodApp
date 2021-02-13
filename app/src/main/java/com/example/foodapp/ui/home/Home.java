@@ -19,6 +19,9 @@ import com.example.foodapp.databinding.ActivityHomeBinding;
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.models.LatestMealModel;
 import com.example.foodapp.ui.search.SearchPage;
+import com.example.foodapp.ui.signInUp.FacebookLoginController;
+import com.example.foodapp.ui.signInUp.GoogleLoginController;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +32,7 @@ public class Home extends AppCompatActivity {
     private ViewModelForHome viewModelForHome;
     private AdapterForViewagerHome adapterForViewagerHome;
     private AdapterForHomeCategories adapterForHomeCategories;
+
 
 
     @Override
@@ -42,7 +46,6 @@ public class Home extends AppCompatActivity {
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         toggle.syncState();
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-
         showRandomRecipes();
         showHomeCategories();
         toSearchPage();
@@ -106,8 +109,9 @@ public class Home extends AppCompatActivity {
         });
     }
 
-
-
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        GoogleLoginController.getInstance(this).onStart();
+    }
 }
