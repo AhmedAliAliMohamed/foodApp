@@ -2,11 +2,11 @@ package com.example.foodapp.ui.signInUp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.util.Patterns;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Toast;
+
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +27,7 @@ public class SignIn extends AppCompatActivity {
     private ActivitySignInBinding activitySignInBinding;
     private ViewModelForSign viewModelForSign;
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^" + ".{8,20}");
-    private static final String STATUS_SIGN_IN = "NORMAL_SIGN_IN";
+    private static final String STATUS_SIGN_IN = "NORMAL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,8 @@ public class SignIn extends AppCompatActivity {
         signInFacebook();
         GoogleLoginController.getInstance(SignIn.this).initializeApiClient();
         FacebookLoginController.getInstance(this).getCallbackManager();
+
+
     }
 
     private void clickToSingIn() {
@@ -48,16 +50,17 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View view) {
                 String email = activitySignInBinding.textUsernameInput.getEditText().getText().toString();
                 String password = activitySignInBinding.textPasswordInput.getEditText().getText().toString();
+                rememberMe(email,password);
                 if (email.isEmpty() || password.isEmpty()) {
-                    activitySignInBinding.textUsernameEditText.setError("This field is required");
-                    activitySignInBinding.textPasswordEditText.setError("This field is required");
+                    activitySignInBinding.textUsernameInput.setHelperText("This field is required");
+                    activitySignInBinding.textPasswordInput.setHelperText("This field is required");
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    activitySignInBinding.textUsernameEditText.setError("Please enter the email correctly");
+                    activitySignInBinding.textUsernameInput.setHelperText("Please enter the email correctly");
                 } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-                    activitySignInBinding.textPasswordEditText.setError("The total password you entered is less than 8");
+                    activitySignInBinding.textPasswordInput.setHelperText("The total password you entered is less than 8");
                 } else {
-                    activitySignInBinding.textUsernameEditText.setError(null);
-                    activitySignInBinding.textPasswordEditText.setError(null);
+                    activitySignInBinding.textUsernameInput.setHelperText(null);
+                    activitySignInBinding.textPasswordInput.setHelperText(null);
                     viewModelForSign.signIn(email, password);
                     viewModelForSign.getUserLiveData().observe(SignIn.this, new Observer<FirebaseUser>() {
                         @Override
@@ -67,10 +70,7 @@ public class SignIn extends AppCompatActivity {
                             if (firebaseUser != null) {
                                 startActivity(new Intent(SignIn.this, Home.class));
                                 finish();
-                                String image = String.valueOf(firebaseUser.getPhotoUrl());
-                                rememberMe(firebaseUser.getUid(),email,password, image);
                             } else {
-                                Log.d("Ahmed", "Login Login Failure:");
                                 activitySignInBinding.progressCircularLogin.setVisibility(View.GONE);
                                 activitySignInBinding.btnLogin.setVisibility(View.VISIBLE);
                             }
@@ -120,29 +120,18 @@ public class SignIn extends AppCompatActivity {
 
     }
 
-    private void rememberMe(String userId, String userEmail,String password, String userImage) {
-        activitySignInBinding.checkboxRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (compoundButton.isChecked()) {
-                    SharedPrefManager.getInstance().getSharedPref(SignIn.this);
-                    SharedPrefManager.getInstance().setUserIdVal(SignIn.this, userId);
-                    SharedPrefManager.getInstance().setUserImage(SignIn.this, userImage);
-                    SharedPrefManager.getInstance().setUserEmail(SignIn.this,userEmail);
-                    SharedPrefManager.getInstance().setPassword(SignIn.this,password);
-                    SharedPrefManager.getInstance().setStatus(SignIn.this,STATUS_SIGN_IN);
-                    Toast.makeText(SignIn.this, "احمد علي علي", Toast.LENGTH_SHORT).show();
-                } else {
-                    SharedPrefManager.getInstance().getSharedPref(SignIn.this);
-                    SharedPrefManager.getInstance().setUserIdVal(SignIn.this, null);
-                    SharedPrefManager.getInstance().setUserImage(SignIn.this, null);
-                    SharedPrefManager.getInstance().setUserEmail(SignIn.this,null);
-                    SharedPrefManager.getInstance().setPassword(SignIn.this,null);
-                    SharedPrefManager.getInstance().setStatus(SignIn.this,null);
-                    Toast.makeText(SignIn.this, "علي علي هلي", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+    private void rememberMe( String userEmail ,String password) {
+      if (activitySignInBinding.checkboxRemember.isChecked()){
+              SharedPrefManager.getInstance().getSharedPref(SignIn.this);
+              SharedPrefManager.getInstance().setUserEmail(SignIn.this,userEmail);
+              SharedPrefManager.getInstance().setPassword(SignIn.this,password);
+              SharedPrefManager.getInstance().setStatus(SignIn.this,STATUS_SIGN_IN);Toast.makeText(this, ""+SharedPrefManager.getInstance().getSharedPref(this).getString("STATUS",""), Toast.LENGTH_SHORT).show();
+      }else if (! activitySignInBinding.checkboxRemember.isChecked()){
+          SharedPrefManager.getInstance().getSharedPref(SignIn.this);
+          SharedPrefManager.getInstance().setUserEmail(SignIn.this,null);
+          SharedPrefManager.getInstance().setPassword(SignIn.this,null);
+          SharedPrefManager.getInstance().setStatus(SignIn.this,null);
+      }
     }
 
 

@@ -126,7 +126,10 @@ public class GoogleLoginController{
                 , new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
+                if (task.isSuccessful()){
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    updateUI(null);
+                }
 
             }
         });
@@ -139,9 +142,7 @@ public class GoogleLoginController{
 
     public void updateUI(FirebaseUser user){
         if (user != null){
-            Toast.makeText(context, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(context, ""+user.getDisplayName(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(context, ""+user.getPhotoUrl(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Update Ui Google", Toast.LENGTH_SHORT).show();
         }
     }
 

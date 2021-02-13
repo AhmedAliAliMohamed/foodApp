@@ -41,7 +41,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 
-public class RepoForSign{
+public class RepoForSign {
     private Application application;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -51,7 +51,6 @@ public class RepoForSign{
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
     private MutableLiveData<String> uploadImage;
-
 
 
     public RepoForSign(Application application) {
@@ -78,14 +77,14 @@ public class RepoForSign{
                             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()){
+                                    if (task.isSuccessful()) {
                                         Toast.makeText(application, "Success verification mail sent please check your mail ", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(application, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(application, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -101,26 +100,25 @@ public class RepoForSign{
     }
 
     public void signIn(String email, String password) {
-        firebaseAuth.signInWithEmailAndPassword(email,password)
+        firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                        if (firebaseAuth.getCurrentUser().isEmailVerified()){
-                            userLiveData.postValue(task.getResult().getUser());
-                        }else {
-                            Toast.makeText(application, "Please check your mail and make verified", Toast.LENGTH_SHORT).show();
-                        }}
+                        if (task.isSuccessful()) {
+                            if (firebaseAuth.getCurrentUser().isEmailVerified()) {
+                                userLiveData.postValue(task.getResult().getUser());
+                            } else {
+                                Toast.makeText(application, "Please check your mail and make verified", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(application, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(application, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
     public void logOut() {
         firebaseAuth.signOut();
@@ -162,7 +160,6 @@ public class RepoForSign{
             }
         });
     }
-
 
     public MutableLiveData<FirebaseUser> getUserLiveData() {
         return userLiveData;

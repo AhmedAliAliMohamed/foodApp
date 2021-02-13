@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void progressBarHandel() {
         Handler handler;
-        if (tokenId.isEmpty()) {
+        if (status.isEmpty()) {
             handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-            }, 5000);
+            }, 500000);
         } else {
             signIn();
         }
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             FacebookLoginController.getInstance(this).firebaseAuthWithFacebook(tokenId);
         }else if (status.equals("GOOGLE")){
             GoogleLoginController.getInstance(this).firebaseAuthWithGoogle(tokenId);
-        }else if (status.equals("NORMAL_SIGN_IN")){
+        }else if (status.equals("NORMAL")){
             String email = SharedPrefManager.getInstance().getSharedPref(this).getString(SharedPrefManager.getUserEmail(),"");
             String password = SharedPrefManager.getInstance().getSharedPref(this).getString(SharedPrefManager.getPassword(),"");
             viewModelForSign = ViewModelProviders.of(this).get(ViewModelForSign.class);
