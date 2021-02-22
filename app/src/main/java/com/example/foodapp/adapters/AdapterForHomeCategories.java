@@ -53,9 +53,14 @@ public class AdapterForHomeCategories extends RecyclerView.Adapter<AdapterForHom
     @Override
     public void onBindViewHolder(@NonNull AdapterForHomeCategories.Holder holder, int position) {
         HomeCategoriesModel  categoriesModel = homeCategoriesModels.get(position);
-//        Picasso.get().load(categoriesModel.getPrimaryImage()).into(holder.imageHomeCategories);
         holder.titleCategories.setText(categoriesModel.getCategory());
-
+        try {
+            if (categoriesModel.getPrimaryImage() != null) {
+                Picasso.get().load(categoriesModel.getPrimaryImage()).into(holder.imageHomeCategories);
+            }
+        }catch (Exception e){
+            Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -71,7 +76,7 @@ public class AdapterForHomeCategories extends RecyclerView.Adapter<AdapterForHom
 
         public Holder(@NonNull View itemView, final setOnClickListener setOnClickListener) {
             super(itemView);
-            imageHomeCategories = itemView.findViewById(R.id.mealThumb);
+            imageHomeCategories = (ImageView) itemView.findViewById(R.id.mealThumb);
             titleCategories = itemView.findViewById(R.id.categoryName);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

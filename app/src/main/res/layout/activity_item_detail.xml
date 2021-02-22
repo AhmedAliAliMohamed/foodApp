@@ -15,16 +15,47 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+              <com.github.ybq.android.spinkit.SpinKitView
+                  android:id="@+id/spin_kit_progress"
+                  style="@style/SpinKitView.Circle"
+                  android:layout_width="@dimen/_80sdp"
+                  android:layout_height="@dimen/_80sdp"
+                  android:layout_gravity="center"
+                  app:SpinKit_Color="@color/color_logo" />
+
+
               <ImageView
                   android:id="@+id/image_view_details_item"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:scaleType="fitXY"
-                  android:src="@drawable/sample_image_category" />
+                  android:visibility="gone"/>
+
 
               <include
                   layout="@layout/bottom_sheet_design"/>
           </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+          <androidx.cardview.widget.CardView
+              android:id="@+id/card_bottom_sheet_open"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/_30sdp"
+              app:cardBackgroundColor="@color/black"
+              app:cardElevation="@dimen/_5sdp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintEnd_toEndOf="parent">
+
+              <View
+                  android:layout_width="@dimen/_80sdp"
+                  android:layout_height="@dimen/_4sdp"
+                  android:layout_gravity="center"
+                  android:background="@color/color_logo" />
+
+          </androidx.cardview.widget.CardView>
+
+
+
 
       </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -46,6 +46,7 @@ public class RepoForHome {
             @Override
             public void onResponse(Call<List<HomeCategoriesModel>> call, Response<List<HomeCategoriesModel>> response) {
                 homeCategoriesModelMutableLiveData.postValue(response.body());
+
             }
 
             @Override

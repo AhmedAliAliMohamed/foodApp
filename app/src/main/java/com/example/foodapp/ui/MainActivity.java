@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-            }, 500000);
+            }, 10000);
         } else {
             signIn();
         }

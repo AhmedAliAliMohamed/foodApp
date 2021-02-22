@@ -1,6 +1,7 @@
 package com.example.foodapp.services;
 
 import com.example.foodapp.models.HomeCategoriesModel;
+import com.example.foodapp.models.ItemsFromCategoryModel;
 import com.example.foodapp.models.LatestMealModel;
 import com.example.foodapp.models.ModelForDetailItem;
 import com.example.foodapp.models.ModelSearch;
@@ -45,5 +46,8 @@ public class ApiClient {
 
     public Call<ModelForDetailItem> getDetailItem(int itemid){
         return apiCallInterface.getDetailItem(itemid);
+    }
+    public Call<ItemsFromCategoryModel> getItemsFromCategory(String anyKeyWord){
+        return apiCallInterface.getItemFromCategoryModel(anyKeyWord);
     }
 }

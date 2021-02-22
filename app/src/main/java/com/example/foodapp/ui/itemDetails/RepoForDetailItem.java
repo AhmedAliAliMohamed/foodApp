@@ -23,16 +23,13 @@ public class RepoForDetailItem {
     public RepoForDetailItem(Application application) {
         this.application = application;
         this.getDetailItem = new MutableLiveData<>();
-
     }
 
     public void setGetDetailItem(int id){
        ApiClient.getInstance().getDetailItem(id).enqueue(new Callback<ModelForDetailItem>() {
            @Override
            public void onResponse(Call<ModelForDetailItem> call, Response<ModelForDetailItem> response) {
-
                getDetailItem.postValue(response.body());
-
            }
 
            @Override

@@ -107,6 +107,8 @@ dependencies {
 
     //Images
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
+
 
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'

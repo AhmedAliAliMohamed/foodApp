@@ -14,32 +14,28 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-
+        <activity android:name=".ui.recipes.RecipesFromCategories"></activity>
         <activity
             android:name=".ui.itemDetails.ItemDetail"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.search.SearchPage"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.home.Home"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.signInUp.SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.signInUp.SignIn"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
