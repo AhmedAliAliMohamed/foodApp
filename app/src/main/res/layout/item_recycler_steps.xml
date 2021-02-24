@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/_11ssp"
-        android:textColor="@color/darl_blue"
+        android:textColor="@color/dark_blue"
         android:fontFamily="@font/lato_mediumitalic"
         android:gravity="center"/>
 

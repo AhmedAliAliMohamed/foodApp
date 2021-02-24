@@ -6,15 +6,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
+
 import com.example.foodapp.R;
 import com.example.foodapp.databinding.ActivityMainBinding;
 import com.example.foodapp.services.SharedPrefManager;
@@ -24,9 +21,6 @@ import com.example.foodapp.ui.signInUp.GoogleLoginController;
 import com.example.foodapp.ui.signInUp.SignIn;
 import com.example.foodapp.ui.signInUp.ViewModelForSign;
 import com.google.firebase.auth.FirebaseUser;
-
-import static com.daimajia.androidanimations.library.Techniques.FadeIn;
-import static com.daimajia.androidanimations.library.Techniques.StandUp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,22 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private void progressBarHandel() {
-        Handler handler;
-        if (status.isEmpty()) {
-            handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(MainActivity.this, SignIn.class);
+        activityMainBinding.textLogoMain.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (status.isEmpty()){
+                Intent intent = new Intent(MainActivity.this, SignIn.class);
                     startActivity(intent);
                     finish();
+                }else {
+                    signIn();
                 }
-            }, 10000);
-        } else {
-            signIn();
-        }
+            }
+        },5000);
 
     }
 
@@ -85,8 +76,13 @@ public class MainActivity extends AppCompatActivity {
             viewModelForSign.getUserLiveData().observe(this, new Observer<FirebaseUser>() {
                 @Override
                 public void onChanged(FirebaseUser firebaseUser) {
+                    if (firebaseUser == null){
+                        startActivity(new Intent(MainActivity.this , SignIn.class));
+                        finish();
+                    }else if (firebaseUser != null){
                     startActivity(new Intent(MainActivity.this , Home.class));
                     finish();
+                    }
                 }
             });
         }

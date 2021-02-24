@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toolbar;
 
 import com.example.foodapp.R;
 import com.example.foodapp.adapters.AdapterForHomeCategories;
@@ -21,7 +22,10 @@ import com.example.foodapp.models.LatestMealModel;
 import com.example.foodapp.ui.search.SearchPage;
 import com.example.foodapp.ui.signInUp.FacebookLoginController;
 import com.example.foodapp.ui.signInUp.GoogleLoginController;
+import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,24 +36,23 @@ public class Home extends AppCompatActivity {
     private ViewModelForHome viewModelForHome;
     private AdapterForViewagerHome adapterForViewagerHome;
     private AdapterForHomeCategories adapterForHomeCategories;
-
-
+    private FirebaseUser firebaseUser;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityHomeBinding = DataBindingUtil.setContentView(this,R.layout.activity_home);
         viewModelForHome = ViewModelProviders.of(this).get(ViewModelForHome.class);
-
-        setSupportActionBar(activityHomeBinding.toolbar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,activityHomeBinding.drawerLayout,activityHomeBinding.toolbar,
+        setSupportActionBar(activityHomeBinding.toolbarHome);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                activityHomeBinding.drawerLayout,activityHomeBinding.toolbarHome,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         toggle.syncState();
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         showRandomRecipes();
         showHomeCategories();
         toSearchPage();
-
     }
 
     @Override
@@ -57,19 +60,19 @@ public class Home extends AppCompatActivity {
         if (activityHomeBinding.drawerLayout.isDrawerOpen(GravityCompat.START)){
             activityHomeBinding.drawerLayout.closeDrawer(GravityCompat.START);
         }else {super.onBackPressed();}
-
     }
 
     private void showRandomRecipes(){
-
         adapterForViewagerHome = new AdapterForViewagerHome(this);
         activityHomeBinding.viewPagerContainer.setAdapter(adapterForViewagerHome);
         viewModelForHome.latest();
         viewModelForHome.getMealMutableLiveData().observe(this, new Observer<LatestMealModel>() {
             @Override
             public void onChanged(LatestMealModel latestMealModel) {
+                if (latestMealModel !=null){
+                    activityHomeBinding.shimmerViewPagerContainer.setVisibility(View.GONE);
                 adapterForViewagerHome.setLatestMealModels(latestMealModel.getResults());
-
+                }
             }
         });
     }
@@ -103,8 +106,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentToSearchPage = new Intent(Home.this, SearchPage.class);
                 startActivity(intentToSearchPage);
-
-
             }
         });
     }

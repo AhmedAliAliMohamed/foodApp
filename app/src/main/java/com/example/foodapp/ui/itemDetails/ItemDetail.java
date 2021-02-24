@@ -33,7 +33,6 @@ public class ItemDetail extends AppCompatActivity {
     private ViewModelForDetailItem modelForDetailItem;
     private View linearLayout;
     private BottomSheetBehavior bottomSheetBehavior;
-    private BottomSheets getBottomSheet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,27 +40,25 @@ public class ItemDetail extends AppCompatActivity {
         activityItemDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_item_detail);
         modelForDetailItem = ViewModelProviders.of(this).get(ViewModelForDetailItem.class);
         getValueIntent();
-        getBottomSheet = new BottomSheets();
-       getBottomSheet.show(getSupportFragmentManager(),"TAG");
-        bottomSheetOnClick();
+        BottomSheets.getBottomSheet().show(getSupportFragmentManager(), "TAG");
         getDetailItem();
-        Log.d("Ahmed","SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"+itemId);
+        bottomSheetOnClick();
     }
 
     private void bottomSheetOnClick() {
         linearLayout = findViewById(R.id.design_bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(linearLayout);
-       activityItemDetailBinding.cardBottomSheetOpen.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-                   bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-               } else {
-                   getBottomSheet.show(getSupportFragmentManager(),"TAG");
-                   getDetailItem();
-               }
-           }
-       });
+        activityItemDetailBinding.cardBottomSheetOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                } else {
+                    BottomSheets.getBottomSheet().show(getSupportFragmentManager(), "TAG");
+                    getDetailItem();
+                }
+            }
+        });
         bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -87,9 +84,9 @@ public class ItemDetail extends AppCompatActivity {
                 Picasso.get().load(modelForDetailItem.getPhotoUrl()).into(activityItemDetailBinding.imageViewDetailsItem);
                 activityItemDetailBinding.spinKitProgress.setVisibility(View.GONE);
                 activityItemDetailBinding.imageViewDetailsItem.setVisibility(View.VISIBLE);
-                    getBottomSheet.showIngredient(modelForDetailItem,ItemDetail.this);
-                    getBottomSheet.showSteps(modelForDetailItem,ItemDetail.this);
-                    getBottomSheet.bottomSheetItemsView(modelForDetailItem);
+                BottomSheets.getBottomSheet().showIngredient(modelForDetailItem, ItemDetail.this);
+                BottomSheets.getBottomSheet().showSteps(modelForDetailItem, ItemDetail.this);
+                BottomSheets.getBottomSheet().bottomSheetItemsView(modelForDetailItem);
             }
         });
     }

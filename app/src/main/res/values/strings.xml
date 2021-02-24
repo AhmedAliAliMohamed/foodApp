@@ -21,6 +21,10 @@
     <string name="search">Search</string>
     <string name="facebook_app_id">567162047573009</string>
     <string name="fb_login_protocol_scheme">fb567162047573009</string>
+    <string name="retry">Retry</string>
+    <string name="please_check_your_connection">Please check your connection</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="oops">OOPS!</string>
 
 
 </resources>

@@ -151,7 +151,7 @@
                                 android:layout_marginLeft="@dimen/_10sdp"
                                 android:fontFamily="@font/lato_mediumitalic"
                                 android:text="TotalCalories"
-                                android:textColor="@color/darl_blue"
+                                android:textColor="@color/dark_blue"
                                 android:textSize="@dimen/_10ssp"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/progress_circular_TotalCalories" />
@@ -193,7 +193,7 @@
                                 android:layout_marginLeft="@dimen/_10sdp"
                                 android:fontFamily="@font/lato_mediumitalic"
                                 android:text="Total Fat"
-                                android:textColor="@color/darl_blue"
+                                android:textColor="@color/dark_blue"
                                 android:textSize="@dimen/_10ssp"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/progress_circular_total_fat" />
@@ -235,7 +235,7 @@
                                 android:layout_marginLeft="@dimen/_10sdp"
                                 android:fontFamily="@font/lato_mediumitalic"
                                 android:text="Total Carb"
-                                android:textColor="@color/darl_blue"
+                                android:textColor="@color/dark_blue"
                                 android:textSize="@dimen/_10ssp"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/progress_circular_total_carb" />
@@ -277,7 +277,7 @@
                                 android:layout_marginLeft="@dimen/_10sdp"
                                 android:fontFamily="@font/lato_mediumitalic"
                                 android:text="Total Sugar"
-                                android:textColor="@color/darl_blue"
+                                android:textColor="@color/dark_blue"
                                 android:textSize="@dimen/_10ssp"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/progress_circular_sugar" />
@@ -318,7 +318,7 @@
                                 android:layout_marginLeft="@dimen/_10sdp"
                                 android:fontFamily="@font/lato_mediumitalic"
                                 android:text="Total Protein"
-                                android:textColor="@color/darl_blue"
+                                android:textColor="@color/dark_blue"
                                 android:textSize="@dimen/_10ssp"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/progress_circular_protein" />
@@ -345,7 +345,7 @@
                         android:fontFamily="@font/lato_mediumitalic"
                         android:gravity="center"
                         android:hint="No description for this dish "
-                        android:textColor="@color/darl_blue"
+                        android:textColor="@color/dark_blue"
                         android:textSize="@dimen/_10ssp" />
 
                     <TextView

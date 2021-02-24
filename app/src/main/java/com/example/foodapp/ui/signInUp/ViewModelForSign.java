@@ -33,6 +33,7 @@ public class ViewModelForSign extends AndroidViewModel {
         if (email.isEmpty() || password.isEmpty()){
             Toast.makeText(getApplication().getApplicationContext(), "E-mail or password is empty please check it", Toast.LENGTH_SHORT).show();
         }else {
+            userLiveData.postValue(null);
         repoForSign.signIn(email, password);
         }
     }

@@ -142,7 +142,6 @@ public class GoogleLoginController{
 
     public void updateUI(FirebaseUser user){
         if (user != null){
-            Toast.makeText(context, "Update Ui Google", Toast.LENGTH_SHORT).show();
         }
     }
 

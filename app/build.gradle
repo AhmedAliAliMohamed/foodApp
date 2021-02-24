@@ -112,6 +112,8 @@ dependencies {
 
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation "com.airbnb.android:lottie:3.6.0"
+
 
 
 }

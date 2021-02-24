@@ -14,13 +14,14 @@
         tools:context=".ui.home.Home"
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
             
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar_Home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/AppTheme.NoActionBar"
@@ -32,7 +33,7 @@
                 android:id="@+id/card_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/toolbar"
+                android:layout_below="@id/toolbar_Home"
                 android:layout_marginLeft="@dimen/_16sdp"
                 android:layout_marginRight="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -54,7 +55,7 @@
                     android:background="@color/light_gray"/>
             </androidx.cardview.widget.CardView>
 
-            <include android:id="@+id/shimmer_view_container"
+            <include android:id="@+id/shimmer_view_pager_container"
                 layout="@layout/item_view_pager_shimmer"/>
 
             <androidx.viewpager.widget.ViewPager

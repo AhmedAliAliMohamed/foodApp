@@ -31,14 +31,12 @@ public class SearchPage extends AppCompatActivity {
     private String anyKeyWord;
     private List<ModelSearch.ResultsBean> resultsBeans = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activitySearchPageBinding = DataBindingUtil.setContentView(this,R.layout.activity_search_page);
         viewModelForSearch = ViewModelProviders.of(this).get(ViewModelForSearch.class);
         activitySearchPageBinding.searchShimmerItemInclude.setVisibility(View.GONE);
-
 
         setSupportActionBar(activitySearchPageBinding.toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,activitySearchPageBinding.drawerSearch,activitySearchPageBinding.toolbar,
@@ -51,7 +49,6 @@ public class SearchPage extends AppCompatActivity {
 
 
     }
-
 
     private void getItem(){
         adapterForSearchItem = new AdapterForSearchItem(SearchPage.this);
@@ -84,6 +81,7 @@ public class SearchPage extends AppCompatActivity {
 
 
     }
+
     private void clickOnText(){
         activitySearchPageBinding.txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -100,7 +98,7 @@ public class SearchPage extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (editable != null){
                     activitySearchPageBinding.searchShimmerItemInclude.setVisibility(View.VISIBLE);
-                }else {
+                }else if (editable == null){
                     activitySearchPageBinding.searchShimmerItemInclude.setVisibility(View.GONE);
 
                 }

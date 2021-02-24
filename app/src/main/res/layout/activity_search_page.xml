@@ -16,6 +16,7 @@
         tools:openDrawer="start">
 
         <LinearLayout
+            android:id="@+id/linear_search_cont"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toEndOf="parent"
@@ -64,7 +65,13 @@
                     android:text="@string/search"
                     android:textStyle="bold"
                     app:backgroundTint="@color/color_logo" />
+
             </androidx.cardview.widget.CardView>
+
+            <include
+                android:id="@+id/search_shimmer_item_include"
+                layout="@layout/item_search_shimmer"/>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_for_search"
@@ -73,6 +80,8 @@
                 android:layout_weight="10"
                 android:layout_marginTop="@dimen/_10sdp"/>
         </LinearLayout>
+
+
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation_bar"
