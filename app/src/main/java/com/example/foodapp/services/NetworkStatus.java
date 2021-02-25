@@ -1,6 +1,5 @@
 package com.example.foodapp.services;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -8,8 +7,6 @@ import android.net.NetworkInfo;
 
 
 public class NetworkStatus {
-
-
 
     public static boolean getConnectivityStatus(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context

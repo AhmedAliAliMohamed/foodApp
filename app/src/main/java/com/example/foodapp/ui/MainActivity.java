@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         status = SharedPrefManager.getInstance().getSharedPref(this).getString(SharedPrefManager.getStatus(),"");
         tokenId =SharedPrefManager.getInstance().getSharedPref(this).getString(SharedPrefManager.getUserTokenId(),"");
 
-
         animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         activityMainBinding.iamgeSvgLogo.startAnimation(animation);
         animation = AnimationUtils.loadAnimation(this, R.anim.side_down);
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.textLogoMain.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (status.isEmpty()){
+                if (status == null){
                 Intent intent = new Intent(MainActivity.this, SignIn.class);
                     startActivity(intent);
                     finish();
