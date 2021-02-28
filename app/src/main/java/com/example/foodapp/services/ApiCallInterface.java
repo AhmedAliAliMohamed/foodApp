@@ -10,6 +10,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
@@ -27,8 +28,8 @@ public interface ApiCallInterface {
     @GET("/recipe/steps/id?api_key=vo5lh4MaziwanrC49T3YS2uL2SM8trFx")
     Call<ModelForDetailItem> getDetailItem(@Query("id") int itemId);
 
-    @GET("/recipes?any_kw=&api_key=vo5lh4MaziwanrC49T3YS2uL2SM8trFx")
-    Call<ItemsFromCategoryModel> getItemFromCategoryModel(@Query("any_kw") String anKeyWord);
+    @GET("/recipes?include_primarycat&api_key=vo5lh4MaziwanrC49T3YS2uL2SM8trFx")
+    Call<ItemsFromCategoryModel> getItemFromCategoryModel(@Query("include_primarycat") String include_primarycat);
 
 
 }

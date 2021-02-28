@@ -11,80 +11,97 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.Home"
         android:fitsSystemWindows="true"
+        tools:context=".ui.home.Home"
         tools:openDrawer="start">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_Home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                 />
+                android:theme="@style/AppTheme.NoActionBar">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_user"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/ic_chef_hat" />
+
+                <TextView
+                    android:id="@+id/display_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:fontFamily="@font/kaushan_script_regular"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15ssp" />
+            </androidx.appcompat.widget.Toolbar>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/toolbar_Home"
                 android:layout_marginLeft="@dimen/_16sdp"
-                android:layout_marginRight="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_16sdp"
                 app:cardCornerRadius="@dimen/_100sdp"
-                app:cardElevation="0dp"
-                >
+                app:cardElevation="0dp">
+
                 <TextView
                     android:id="@+id/txt_search"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:hint="@string/search_your_recipes"
-                    android:fontFamily="@font/lato_mediumitalic"
+                    android:background="@color/light_gray"
                     android:drawableLeft="@drawable/ic_baseline_search_24"
                     android:drawablePadding="@dimen/_8sdp"
-                    android:singleLine="true"
-                    android:paddingLeft="@dimen/_10sdp"
+                    android:fontFamily="@font/lato_mediumitalic"
                     android:gravity="left|center"
-                    android:textSize="@dimen/_15ssp"
-                    android:background="@color/light_gray"/>
+                    android:hint="@string/search_your_recipes"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/_15ssp" />
             </androidx.cardview.widget.CardView>
 
-            <include android:id="@+id/shimmer_view_pager_container"
-                layout="@layout/item_view_pager_shimmer"/>
+            <include
+                android:id="@+id/shimmer_view_pager_container"
+                layout="@layout/item_view_pager_shimmer" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager_container"
-                android:foregroundGravity="center"
-                android:overScrollMode="never"
-                android:clipToPadding="false"
-                android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_130sdp"
                 android:layout_below="@id/card_search"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp">
-            </androidx.viewpager.widget.ViewPager>
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:clipToPadding="false"
+                android:foregroundGravity="center"
+                android:overScrollMode="never"></androidx.viewpager.widget.ViewPager>
 
             <TextView
                 android:id="@+id/text_title_mealing_cate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/view_pager_container"
+                android:layout_marginLeft="@dimen/_8sdp"
                 android:fontFamily="@font/lato_mediumitalic"
                 android:text="Mealing categories"
-                android:textSize="@dimen/_13ssp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_below="@id/view_pager_container"
-                android:layout_marginLeft="@dimen/_8sdp"/>
-
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -96,12 +113,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:orientation="horizontal"/>
+                android:layout_marginRight="@dimen/_8sdp"
+                android:orientation="horizontal" />
 
-            <include android:id="@+id/recycler_view_shimmer"
-                layout="@layout/item_recycler_view_shimmer"/>
+            <include
+                android:id="@+id/recycler_view_shimmer"
+                layout="@layout/item_recycler_view_shimmer" />
 
         </RelativeLayout>
 
@@ -111,13 +129,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header"
-            app:menu="@menu/drawer_menu"
             android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header"
             app:itemIconTint="@color/color_logo"
-            app:itemTextColor="@color/black"/>
+            app:itemTextColor="@color/black"
+            app:menu="@menu/drawer_menu" />
     </androidx.drawerlayout.widget.DrawerLayout>
-
 
 
 </layout>

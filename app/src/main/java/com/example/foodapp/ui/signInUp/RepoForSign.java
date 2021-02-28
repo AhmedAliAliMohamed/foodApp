@@ -112,6 +112,7 @@ public class RepoForSign {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
                         downloadImage(userId);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -128,9 +129,7 @@ public class RepoForSign {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
-
                     uploadImage.postValue(task.getResult().toString());
-                    String image = uploadImage.getValue();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

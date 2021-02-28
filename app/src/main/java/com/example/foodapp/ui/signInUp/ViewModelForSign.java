@@ -15,6 +15,7 @@ public class ViewModelForSign extends AndroidViewModel {
    private MutableLiveData<FirebaseUser> userLiveData;
    private MutableLiveData<Boolean> loggedOutLiveData;
    private MutableLiveData<String> uploadImage;
+   private MutableLiveData<Uri> downLoadImage;
 
 
     public ViewModelForSign(Application application) {
@@ -46,7 +47,9 @@ public class ViewModelForSign extends AndroidViewModel {
         repoForSign.uploadImage(userId,fileImage);
     }
 
-
+    public void getImage(String userId){
+        repoForSign.downloadImage(userId);
+    }
     public MutableLiveData<FirebaseUser> getUserLiveData() {
         return userLiveData;
     }
@@ -58,4 +61,5 @@ public class ViewModelForSign extends AndroidViewModel {
     public MutableLiveData<String> getUploadImage() {
         return uploadImage;
     }
+
 }

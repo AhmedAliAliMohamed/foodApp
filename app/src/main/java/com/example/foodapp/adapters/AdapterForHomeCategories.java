@@ -1,6 +1,7 @@
 package com.example.foodapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodapp.R;
 import com.example.foodapp.models.HomeCategoriesModel;
+import com.example.foodapp.ui.recipes.RecipesFromCategories;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 
@@ -25,6 +28,7 @@ public class AdapterForHomeCategories extends RecyclerView.Adapter<AdapterForHom
     List<HomeCategoriesModel> homeCategoriesModels = new ArrayList<>();
     private setOnClickListener onClickListener;
     private int position;
+    View view;
 
     public interface  setOnClickListener{
         void  OnClickListener(int position);
@@ -46,21 +50,23 @@ public class AdapterForHomeCategories extends RecyclerView.Adapter<AdapterForHom
     @NonNull
     @Override
     public AdapterForHomeCategories.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_categories,parent,false);
+         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_categories,parent,false);
         return new Holder(view, onClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterForHomeCategories.Holder holder, int position) {
         HomeCategoriesModel  categoriesModel = homeCategoriesModels.get(position);
-        holder.titleCategories.setText(categoriesModel.getCategory());
         try {
             if (categoriesModel.getPrimaryImage() != null) {
+                holder.titleCategories.setText(categoriesModel.getCategory());
                 Picasso.get().load(categoriesModel.getPrimaryImage()).into(holder.imageHomeCategories);
             }
         }catch (Exception e){
-            Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+            Snackbar snackbar = Snackbar
+                    .make(view, ""+e.getMessage(), Snackbar.LENGTH_LONG);
+            snackbar.show();        }
+
 
     }
 
@@ -85,7 +91,9 @@ public class AdapterForHomeCategories extends RecyclerView.Adapter<AdapterForHom
                         position = getAdapterPosition();
                             if (position != RecyclerView.NO_POSITION){
                                 setOnClickListener.OnClickListener(position);
-                                Toast.makeText(context, ""+homeCategoriesModels.get(position).getID(), Toast.LENGTH_SHORT).show();
+                                Intent intentToItems = new Intent(context.getApplicationContext(), RecipesFromCategories.class);
+                                intentToItems.putExtra("keyWord",homeCategoriesModels.get(position).getCategory());
+                                context.startActivity(intentToItems);
                                 notifyDataSetChanged();
                             }
                     }

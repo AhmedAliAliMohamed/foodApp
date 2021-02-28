@@ -47,7 +47,7 @@ public class ApiClient {
     public Call<ModelForDetailItem> getDetailItem(int itemid){
         return apiCallInterface.getDetailItem(itemid);
     }
-    public Call<ItemsFromCategoryModel> getItemsFromCategory(String anyKeyWord){
-        return apiCallInterface.getItemFromCategoryModel(anyKeyWord);
+    public Call<ItemsFromCategoryModel> getItemsFromCategory(String include_primarycat){
+        return apiCallInterface.getItemFromCategoryModel(include_primarycat);
     }
 }

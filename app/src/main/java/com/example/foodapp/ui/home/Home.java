@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.foodapp.R;
@@ -19,13 +21,16 @@ import com.example.foodapp.adapters.AdapterForViewagerHome;
 import com.example.foodapp.databinding.ActivityHomeBinding;
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.models.LatestMealModel;
+import com.example.foodapp.services.SharedPrefManager;
 import com.example.foodapp.ui.search.SearchPage;
 import com.example.foodapp.ui.signInUp.FacebookLoginController;
 import com.example.foodapp.ui.signInUp.GoogleLoginController;
+import com.example.foodapp.ui.signInUp.ViewModelForSign;
 import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Objects;
@@ -36,14 +41,17 @@ public class Home extends AppCompatActivity {
     private ViewModelForHome viewModelForHome;
     private AdapterForViewagerHome adapterForViewagerHome;
     private AdapterForHomeCategories adapterForHomeCategories;
-    private FirebaseUser firebaseUser;
+    private ViewModelForSign viewModelForSign;
     private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private String status ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityHomeBinding = DataBindingUtil.setContentView(this,R.layout.activity_home);
         viewModelForHome = ViewModelProviders.of(this).get(ViewModelForHome.class);
+        viewModelForSign = ViewModelProviders.of(this).get(ViewModelForSign.class);
+        setFirebaseUser();
         setSupportActionBar(activityHomeBinding.toolbarHome);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 activityHomeBinding.drawerLayout,activityHomeBinding.toolbarHome,
@@ -110,9 +118,27 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        GoogleLoginController.getInstance(this).onStart();
+    private void setFirebaseUser(){
+        status = SharedPrefManager.getInstance().getSharedPref(this).getString(SharedPrefManager.getStatus(),"");
+        String image ;
+        if (status.equals("FACE_BOOK") || status.equals("GOOGLE")) {
+            activityHomeBinding.displayUserName.setText(SharedPrefManager.getInstance()
+                    .getSharedPref(Home.this).getString(SharedPrefManager.getUserName(), ""));
+            image = SharedPrefManager.getInstance().getSharedPref(Home.this)
+                    .getString(SharedPrefManager.getUserImage(), "");
+            Picasso.get().load(image).into(activityHomeBinding.imageUser);
+
+        }else if (status.equals("NORMAL")){
+            viewModelForSign.getImage(auth.getCurrentUser().getUid());
+            viewModelForSign.getUploadImage().observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(String s) {
+                    Picasso.get().load(s).into(activityHomeBinding.imageUser);
+                    activityHomeBinding.displayUserName.setText(auth.getCurrentUser().getEmail());
+                }
+            });
+        }
+
+
     }
 }

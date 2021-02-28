@@ -34,6 +34,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.squareup.picasso.Picasso;
 
 public class GoogleLoginController{
 
@@ -84,7 +85,6 @@ public class GoogleLoginController{
 
         } catch (ApiException e) {
             Toast.makeText(context, "Google sign in failed", Toast.LENGTH_SHORT).show();
-            updateUI(null);
         }
     }
 
@@ -97,13 +97,10 @@ public class GoogleLoginController{
                         if (task.isSuccessful()) {
                             Log.d("Ahmed Ali Mohamed", "signInWithCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            updateUI(user);
                             context.startActivity(new Intent(context.getApplicationContext(),Home.class));
                             ((AppCompatActivity) context).finish();
                         } else {
                             Log.w("Ahmed Ali Mohamed", "signInWithCredential:failure", task.getException());
-                            updateUI(null);
-
                         }
                     }
                 });
@@ -128,21 +125,10 @@ public class GoogleLoginController{
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    updateUI(null);
                 }
 
             }
         });
-    }
-
-    public void onStart(){
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        updateUI(user);
-    }
-
-    public void updateUI(FirebaseUser user){
-        if (user != null){
-        }
     }
 
     public void createShared(String userId ,String tokenId ,String userName ,String userEmail,String userImage){

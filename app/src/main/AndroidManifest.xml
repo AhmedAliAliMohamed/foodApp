@@ -15,7 +15,8 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-        <activity android:name=".ui.recipes.RecipesFromCategories"></activity>
+        <activity android:name=".ui.recipes.RecipesFromCategories"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ui.itemDetails.ItemDetail"
             android:theme="@style/AppTheme.NoActionBar" />
