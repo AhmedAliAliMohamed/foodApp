@@ -9,10 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.foodapp.R;
 import com.example.foodapp.models.LatestMealModel;
+import com.example.foodapp.services.AnimationsItems;
 import com.example.foodapp.ui.itemDetails.ItemDetail;
 import com.squareup.picasso.Picasso;
 
@@ -54,6 +56,9 @@ public class AdapterForViewagerHome  extends PagerAdapter {
         View view = LayoutInflater.from(context).inflate(R.layout.item_view_pager_header,container,false);
         ImageView latestImage = view.findViewById(R.id.mealThumb);
         TextView titleLatestMeal = view.findViewById(R.id.mealName);
+        CardView cardViewHome = view.findViewById(R.id.card_view_pager_home);
+        latestImage.setAnimation(AnimationsItems
+                .getANIMATIONS(context.getApplicationContext()).getAnimationBounce());
         LatestMealModel.ResultsBean latestMealModel = latestMealModels.get(position);
         Picasso.get().load(latestMealModel.getPhotoUrl()).into(latestImage);
         titleLatestMeal.setText(latestMealModel.getTitle());

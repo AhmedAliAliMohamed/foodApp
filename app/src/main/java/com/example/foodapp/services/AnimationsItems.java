@@ -9,9 +9,6 @@ import com.example.foodapp.R;
 
 public class AnimationsItems {
     private static AnimationsItems ANIMATIONS;
-
-
-
     private Animation animation;
     private Context context;
 
@@ -26,7 +23,6 @@ public class AnimationsItems {
     }
 
 
-
     public  Animation getAnimationFadeIn(){
         animation = AnimationUtils.loadAnimation(context, R.anim.fade_in);
         return animation;
@@ -35,5 +31,10 @@ public class AnimationsItems {
     public Animation getAnimationSlideDown(){
              animation = AnimationUtils.loadAnimation(context, R.anim.side_down);
      return animation;
+    }
+
+    public Animation getAnimationBounce(){
+        animation = AnimationUtils.loadAnimation(context, R.anim.bounce);
+        return animation;
     }
 }
