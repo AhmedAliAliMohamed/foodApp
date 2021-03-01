@@ -21,6 +21,7 @@ import com.example.foodapp.databinding.ActivitySignInBinding;
 import com.example.foodapp.services.ConnectivityReceiver;
 import com.example.foodapp.services.SharedPrefManager;
 import com.example.foodapp.ui.home.Home;
+import com.facebook.CallbackManager;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
@@ -44,6 +45,7 @@ public class SignIn extends AppCompatActivity {
         signInFacebook();
         GoogleLoginController.getInstance(SignIn.this).initializeApiClient();
         FacebookLoginController.getInstance(this).getCallbackManager();
+
     }
 
     @Override
@@ -111,6 +113,7 @@ public class SignIn extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         FacebookLoginController.getInstance(this).callManagerOnActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == GoogleLoginController.RC_SIGN_IN) {
             GoogleLoginController.getInstance(this).checkLogin(data);
         }

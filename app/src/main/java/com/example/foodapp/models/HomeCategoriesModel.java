@@ -10,10 +10,10 @@ public class HomeCategoriesModel {
      * Category : Appetizers
      * ParentID : 0
      * ShortDescription : Searching for a fancy first course or finger foods to fill party platters?  Our range of appetizer recipes will make your guests forget that anything comes after the hours d'ouevre.
-
-     Prepare elegant salads that complement your main dish, take bruschetta to your friend's cocktail party or get meatballs ready for the Super Bowl.  Discover recipes so easy that even the kids can lend a hand in making them (and eating them!).
-
-     Whether you're seeking something healthy or decadent, simple or elaborate, for the grownups or for the kids, our starter ideas offer the best first bites for every taste bud.
+     * <p>
+     * Prepare elegant salads that complement your main dish, take bruschetta to your friend's cocktail party or get meatballs ready for the Super Bowl.  Discover recipes so easy that even the kids can lend a hand in making them (and eating them!).
+     * <p>
+     * Whether you're seeking something healthy or decadent, simple or elaborate, for the grownups or for the kids, our starter ideas offer the best first bites for every taste bud.
      * PrimaryImage : null
      * DefaultTotalMinutes : 30
      * DefaultActiveMinutes : 30
@@ -67,7 +67,7 @@ public class HomeCategoriesModel {
     }
 
     public String getPrimaryImage() {
-        return  PrimaryImage;
+        return PrimaryImage;
     }
 
     public void setPrimaryImage(String PrimaryImage) {

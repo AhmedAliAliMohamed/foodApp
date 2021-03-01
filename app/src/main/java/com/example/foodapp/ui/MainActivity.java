@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 
 import com.example.foodapp.R;
 import com.example.foodapp.databinding.ActivityMainBinding;
+import com.example.foodapp.services.AnimationsItems;
 import com.example.foodapp.services.SharedPrefManager;
 import com.example.foodapp.ui.home.Home;
 import com.example.foodapp.ui.signInUp.FacebookLoginController;
@@ -25,7 +26,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding activityMainBinding;
-    private Animation animation;
     private ViewModelForSign viewModelForSign;
     private String status;
     private String tokenId;
@@ -37,12 +37,8 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         status = SharedPrefManager.getInstance().getSharedPref(this).getString(SharedPrefManager.getStatus(),"");
         tokenId =SharedPrefManager.getInstance().getSharedPref(this).getString(SharedPrefManager.getUserTokenId(),"");
-
-
-        animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        activityMainBinding.iamgeSvgLogo.startAnimation(animation);
-        animation = AnimationUtils.loadAnimation(this, R.anim.side_down);
-        activityMainBinding.textLogoMain.startAnimation(animation);
+        activityMainBinding.iamgeSvgLogo.startAnimation(AnimationsItems.getANIMATIONS(this).getAnimationFadeIn());
+        activityMainBinding.textLogoMain.startAnimation(AnimationsItems.getANIMATIONS(this).getAnimationSlideDown());
         progressBarHandel();
 
     }

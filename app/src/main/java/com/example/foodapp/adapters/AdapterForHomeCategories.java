@@ -17,6 +17,7 @@ import com.example.foodapp.R;
 import com.example.foodapp.models.HomeCategoriesModel;
 import com.example.foodapp.ui.recipes.RecipesFromCategories;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.crashlytics.internal.network.HttpResponse;
 import com.squareup.picasso.Picasso;
 
 
@@ -57,18 +58,16 @@ public class AdapterForHomeCategories extends RecyclerView.Adapter<AdapterForHom
     @Override
     public void onBindViewHolder(@NonNull AdapterForHomeCategories.Holder holder, int position) {
         HomeCategoriesModel  categoriesModel = homeCategoriesModels.get(position);
+        holder.titleCategories.setText(categoriesModel.getCategory());
         try {
-            if (categoriesModel.getPrimaryImage() != null) {
-                holder.titleCategories.setText(categoriesModel.getCategory());
+            if (categoriesModel.getPrimaryImage() != null ) {
                 Picasso.get().load(categoriesModel.getPrimaryImage()).into(holder.imageHomeCategories);
             }
-        }catch (Exception e){
-            Snackbar snackbar = Snackbar
-                    .make(view, ""+e.getMessage(), Snackbar.LENGTH_LONG);
-            snackbar.show();        }
+        }catch (Exception e){ }
 
 
     }
+
 
     @Override
     public int getItemCount() {

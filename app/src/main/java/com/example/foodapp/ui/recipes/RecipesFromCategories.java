@@ -43,8 +43,7 @@ public class RecipesFromCategories extends AppCompatActivity {
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         toggle.syncState();
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-        activityRecipesFromCategoriesBinding.toolbar.setTitle(keyWord);
-
+        activityRecipesFromCategoriesBinding.txtTitle.setText(keyWord);
        itemFromCategory();
 
 
